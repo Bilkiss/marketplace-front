@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EndpointsService } from "../../services/endpoints.service";
+import { EndpointsService } from '../../services/endpoints.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,9 @@ import { EndpointsService } from "../../services/endpoints.service";
 export class HomeComponent implements OnInit {
 
   carList: any = [];
+  searchText: any;
+  searchItem;
+  carFilterList: any = [];
 
   constructor(
     public endpointService: EndpointsService
@@ -18,6 +21,35 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getCarList();
+    this.searchText = {
+      name: '',
+      price: '',
+      body_type: ''
+    };
+
+  }
+
+  resetSearch() {
+    this.searchItem = '';
+    this.carFilterList = this.carList;
+  }
+
+  searchFunc(event) {
+    console.log('event.target.value: ', event.target.value);
+
+    if (event.target.value) {
+      this.searchItem = this.searchItem.toLowerCase();
+
+      this.carFilterList = this.carList.filter( x => {
+        let carName = x.name.toLowerCase();
+        let carBody = x.body_type.toLowerCase();
+
+        return carName.includes(this.searchItem) || carBody.includes(this.searchItem);
+
+      });
+    } else {
+      this.carFilterList = this.carList;
+    }
 
   }
 
@@ -28,7 +60,9 @@ export class HomeComponent implements OnInit {
         this.carList = res;
         if (this.carList) {
           this.carList = this.carList.data;
-          console.log('Car list: ', this.carList);
+          this.carFilterList = this.carList;
+          // console.log('Car list: ', this.carList);
+          // console.log('Car filter list: ', this.carFilterList);
         }
       }
     }, error => {
