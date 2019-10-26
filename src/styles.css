@@ -628,6 +628,24 @@ video {
   }
 }
 
+.navigation {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  flex-wrap: wrap;
+  border-color: #ebf8ff;
+  padding: 1.5rem;
+  margin-bottom: 0.75rem
+}
+
+.search{
+  background-color: #edf2f7;
+  padding: 1rem
+}
+
 .card {
   max-width: 24rem;
   border-radius: 0.25rem;

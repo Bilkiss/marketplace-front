@@ -3,6 +3,14 @@
 /*@tailwind preflight;*/
 
 @tailwind components;
+
+    .navigation {
+        @apply flex items-center justify-between flex-wrap border-blue-100 p-6 mb-3
+    }
+
+    .search{
+        @apply bg-gray-200 p-4
+    }
     .card {
         @apply max-w-sm rounded overflow-hidden shadow mt-4
     }
