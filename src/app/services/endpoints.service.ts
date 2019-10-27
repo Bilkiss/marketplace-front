@@ -10,7 +10,7 @@ export class EndpointsService {
 
   public endpoints = {
     car_list: `${this.baseUrl}car/list`,
-    car_by_id: `${this.baseUrl}car/`
+    car_by_slug: `${this.baseUrl}car/`
   };
 
   constructor(
@@ -35,4 +35,4 @@ export class EndpointsService {
 }
 
 
-export type endpointType = 'car_list' | 'car_by_id';
+export type endpointType = 'car_list' | 'car_by_slug';

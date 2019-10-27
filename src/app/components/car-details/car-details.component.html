@@ -13,7 +13,7 @@
   <h3>Car details</h3>
   <div class="md:flex hover:shadow p-6 border rounded mt-4">
     <div class="md:flex-shrink-0">
-      <div *ngIf="carID">
+      <div *ngIf="carSlug">
         <img class="rounded-lg md:w-56" [src]="carDetails.image_car"
              alt="{{carDetails.name}}">
       </div>
@@ -21,10 +21,10 @@
     </div>
     <div class="mt-4 md:mt-0 md:ml-6 w-full">
       <div class="uppercase tracking-wide text-xl text-gray-700 font-bold">
-        <span *ngIf="carID">
+        <span *ngIf="carSlug">
           {{carDetails.name}}
         </span>
-        <span *ngIf="!carID">
+        <span *ngIf="!carSlug">
           <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/6">
               <label class="capitalize block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 text-sm"
@@ -49,14 +49,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Body type: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Body type: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.body_type}}
             </span>
-                <div *ngIf="!carID" class="mb-2">
+                <div *ngIf="!carSlug" class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -69,14 +69,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Engine: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Engine: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.engine}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -89,14 +89,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Mileage: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Mileage: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.mileage}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -108,14 +108,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Fuel type: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Fuel type: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.fuel_type}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -129,14 +129,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Transmission: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Transmission: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.transmission}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -148,14 +148,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Door count: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Door count: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               {{carDetails.door_count}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -167,14 +167,14 @@
             <div class="md:flex md:items-center">
               <div class="md:w-2/6">
                 <label class="text-sm block mt-2 mr-3">
-                  Price: <span *ngIf="!carID"><sup class="text-sm text-red-400">*</sup></span>
+                  Price: <span *ngIf="!carSlug"><sup class="text-sm text-red-400">*</sup></span>
                 </label>
               </div>
               <div class="md:w-3/6">
-            <span *ngIf="carID">
+            <span *ngIf="carSlug">
               Rs {{carDetails.price}}
             </span>
-                <div *ngIf="!carID"  class="mb-2">
+                <div *ngIf="!carSlug"  class="mb-2">
                   <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-300"
                          type="text">
                 </div>
@@ -187,7 +187,7 @@
 
 
 
-      <div class="block mt-1 leading-tight text-gray-700" *ngIf="!carID" >
+      <div class="block mt-1 leading-tight text-gray-700" *ngIf="!carSlug" >
         <div class="md:flex md:items-center">
           <div class="md:w-1/6">
             <label class="text-sm md:text-right block mt-2 mr-3">

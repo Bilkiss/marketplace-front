@@ -11,7 +11,7 @@ import { EndpointsService } from '../../services/endpoints.service';
 })
 export class CarDetailsComponent implements OnInit {
 
-  carID;
+  carSlug;
   carDetails: any = {};
   carDetailsForm: FormGroup;
 
@@ -40,8 +40,9 @@ export class CarDetailsComponent implements OnInit {
   ngOnInit() {
 
     // this.carID = '';
-    this.carID = this.route.snapshot.paramMap.get('id');
-    console.log('carID: ', this.carID);
+    this.carSlug = this.route.snapshot.paramMap.get('slug');
+    // this.carID = this.route.snapshot.paramMap.get('id');
+    console.log('carSlug: ', this.carSlug);
 
     this.getCarDetails();
 
@@ -49,8 +50,8 @@ export class CarDetailsComponent implements OnInit {
 
   getCarDetails() {
 
-    if (this.carID) {
-      this.endpointService.requestWithUrlParams('car_by_id', 'get', this.carID).subscribe( res => {
+    if (this.carSlug) {
+      this.endpointService.requestWithUrlParams('car_by_slug', 'get', this.carSlug).subscribe( res => {
         console.log('Get car details res: ', res);
         if (res) {
           this.carDetails = res;

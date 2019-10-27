@@ -76,7 +76,7 @@ export class CarListComponent implements OnInit {
 
           this.carFilterList = this.carList;
           console.log('Car list online: ', this.carList.date_online);
-          // console.log('Car list: ', this.carList);
+          console.log('Car list: ', this.carList);
         }
       }
     }, error => {
