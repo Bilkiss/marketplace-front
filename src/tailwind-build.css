@@ -5,7 +5,7 @@
 @tailwind components;
 
     .navigation {
-        @apply flex items-center justify-between flex-wrap border-blue-100 p-6 mb-3
+        @apply flex items-center justify-between flex-wrap border-blue-100 pt-2 pb-2 pl-6 pr-6
     }
 
     .search{
