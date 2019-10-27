@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EndpointsService } from '../../services/endpoints.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,18 +7,17 @@ import { EndpointsService } from '../../services/endpoints.service';
 })
 export class HomeComponent implements OnInit {
 
-  carList: any = [];
+  catList: any = [];
+  catFilterList: any = [];
   searchText: any;
   searchItem;
-  carFilterList: any = [];
 
-  constructor(
-    public endpointService: EndpointsService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
 
-    this.getCarList();
+    this.getCatList();
+
     this.searchText = {
       name: '',
       price: '',
@@ -29,9 +26,25 @@ export class HomeComponent implements OnInit {
 
   }
 
+  getCatList() {
+    this.catList = [
+      {
+        cat_name: 'Cars',
+        cat_image: '../assets/images/car.jpg',
+        cat_url: '/car-list'
+      },
+      {
+        cat_name: 'Properties',
+        cat_image: '../assets/images/property.jpg',
+        cat_url: '/property-list'
+      }
+    ];
+    this.catFilterList = this.catList;
+  }
+
   resetSearch() {
     this.searchItem = '';
-    this.carFilterList = this.carList;
+    this.catFilterList = this.catList;
   }
 
   searchFunc(event) {
@@ -40,34 +53,16 @@ export class HomeComponent implements OnInit {
     if (event.target.value) {
       this.searchItem = this.searchItem.toLowerCase();
 
-      this.carFilterList = this.carList.filter( x => {
-        let carName = x.name.toLowerCase();
-        let carBody = x.body_type.toLowerCase();
+      this.catFilterList = this.catList.filter( x => {
+        let catName = x.cat_name.toLowerCase();
 
-        return carName.includes(this.searchItem) || carBody.includes(this.searchItem);
-
+        return catName.includes(this.searchItem);
       });
+
     } else {
-      this.carFilterList = this.carList;
+      // this.carFilterList = this.carList;
+      this.catFilterList = this.catList;
     }
-
-  }
-
-  getCarList() {
-    this.endpointService.request('car_list', 'get').subscribe( res => {
-      console.log('Get car list res: ', res);
-      if (res) {
-        this.carList = res;
-        if (this.carList) {
-          this.carList = this.carList.data;
-          this.carFilterList = this.carList;
-          // console.log('Car list: ', this.carList);
-          // console.log('Car filter list: ', this.carFilterList);
-        }
-      }
-    }, error => {
-      console.log('Error!! get car list: ', error);
-    });
 
   }
 

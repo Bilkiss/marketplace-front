@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavComponent } from './components/shared/nav/nav.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
     HeaderComponent,
     FooterComponent,
     NavComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    CarListComponent
   ],
   imports: [
     BrowserModule,
