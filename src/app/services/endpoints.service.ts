@@ -10,6 +10,7 @@ export class EndpointsService {
 
   public endpoints = {
     car_list: `${this.baseUrl}car/list`,
+    car_by_id: `${this.baseUrl}car/`
   };
 
   constructor(
@@ -25,7 +26,13 @@ export class EndpointsService {
     return { error: true, reason: `${method} request to ${this.endpoints[key]} was not sent` };
   }
 
+  requestWithUrlParams(key: endpointType, method, param, payload?) {
+    if (this.endpoints.hasOwnProperty(key))
+      return this.http[method](this.endpoints[key] + '/' + param, payload);
+    return { error: true, reason: `${method} request to ${this.endpoints[key]} was not sent` };
+  }
+
 }
 
 
-export type endpointType = 'car_list';
+export type endpointType = 'car_list' | 'car_by_id';
