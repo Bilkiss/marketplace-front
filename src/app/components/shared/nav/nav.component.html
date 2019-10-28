@@ -15,9 +15,38 @@
         <a [routerLink]="['/']"  class="block mt-2 lg:inline-block md:mt-0 lg:mt-0 text-gray-600 hover:text-gray-900 mr-4">
           Home
         </a>
-      <a [routerLink]="['/login']" class="lg:ml-4 inline-block text-sm px-4 py-2 leading-none border rounded hover:border-transparent text-gray-600 hover:text-white hover:bg-gray-600 mt-2 sm:mt-2 md:mt-0 lg:mt-0">
-        Login / Register
-      </a>
+        <span *ngIf="isUserLogin">
+          <span class="lg:ml-4 mt-3 mb-2 sm:mb-0 md:mb-0 lg-mb-0 sm:mt-3 md:mt-0 lg:mt-0 inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+            <span class="flex">
+              <span class="w-2/6">
+                <img class="h-8 w-8 rounded-full" src="../../../../assets/images/avatar.png" alt="{{user.first_name}}">
+                </span>
+              <span class="w-4/6 h-8">
+                <p class="w-32 pt-1 pr-2 mb-0">Welcome {{user.first_name}}</p>
+              </span>
+            </span>
+
+          </span>
+
+          <span class="position-relative">
+            <span class="lg:ml-4 cursor-pointer inline-block text-sm px-4 py-2 leading-none border rounded text-gray-600" (click)="toggleAddOffer()">
+            Add Offer
+            <i class="ml-3 fa fa-angle-double-down"></i>
+          </span>
+          <ul *ngIf="toggleNavDropdown" class="bg-white absolute top-auto mt-1 mr-2 object-center rounded shadow right-0 w-32 px-6 py-2">
+            <li>
+              <a [routerLink]="['/add-car']" class="text-gray-600 cursor-pointer">Car</a>
+            </li>
+            <li>
+              <a [routerLink]="['/add-property']" class="text-gray-600 cursor-pointer">Property</a>
+            </li>
+          </ul>
+          </span>
+
+        </span>
+        <a *ngIf="!isUserLogin" [routerLink]="['/login']" class="lg:ml-4 inline-block text-sm px-4 py-2 leading-none border rounded hover:border-transparent text-gray-600 hover:text-white hover:bg-gray-600 mt-2 sm:mt-2 md:mt-0 lg:mt-0">
+          Login / Register
+        </a>
     </div>
   </div>
 </nav>

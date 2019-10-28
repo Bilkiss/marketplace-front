@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { EndpointsService } from '../../services/endpoints.service';
 import { StorageService } from '../../services/storage.service';
+import { AuthEventService } from '../../services/events/auth-event.service';
 
 @Component({
   selector: 'app-auth',
@@ -29,7 +30,8 @@ export class AuthComponent implements OnInit {
     public endpointService: EndpointsService,
     public fBuilder: FormBuilder,
     public router: Router,
-    public storage: StorageService
+    public storage: StorageService,
+    public authEventService: AuthEventService
   ) {
 
     this.loginForm = this.fBuilder.group({
@@ -85,6 +87,9 @@ export class AuthComponent implements OnInit {
       console.log('Res login ', res);
       if (res) {
         this.currentUserToken = res;
+
+        this.authEventService.getToken(this.currentUserToken.token);
+        this.authEventService.getUser(this.currentUserToken.user);
 
         this.storage.set('currentUserToken', this.currentUserToken.token);
         this.storage.set('currentUserCred', JSON.stringify(this.currentUserToken.user));
