@@ -10,7 +10,9 @@ export class EndpointsService {
 
   public endpoints = {
     car_list: `${this.baseUrl}car/list`,
-    car_by_slug: `${this.baseUrl}car/`
+    car_by_slug: `${this.baseUrl}car/`,
+    signin: `${this.baseUrl}user/signin`,
+    register: `${this.baseUrl}user/signup`,
   };
 
   constructor(
@@ -35,4 +37,4 @@ export class EndpointsService {
 }
 
 
-export type endpointType = 'car_list' | 'car_by_slug';
+export type endpointType = 'car_list' | 'car_by_slug' | 'signin' | 'register';

@@ -10650,7 +10650,125 @@ video {
   z-index: auto;
 }
 
-/*// Your custom utilities goes here..*/
+.rotate-0 {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.rotate-90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.rotate-180 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.rotate-270 {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.rotate-y-0 {
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.rotate-y-90 {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.rotate-y-180 {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.rotate-y-270 {
+  -webkit-transform: rotateY(270deg);
+          transform: rotateY(270deg);
+}
+
+.hover\:rotate-0:hover {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.hover\:rotate-90:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.hover\:rotate-180:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.hover\:rotate-270:hover {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.hover\:rotate-y-0:hover {
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.hover\:rotate-y-90:hover {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.hover\:rotate-y-180:hover {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.hover\:rotate-y-270:hover {
+  -webkit-transform: rotateY(270deg);
+          transform: rotateY(270deg);
+}
+
+.focus\:rotate-0:focus {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.focus\:rotate-90:focus {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.focus\:rotate-180:focus {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.focus\:rotate-270:focus {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.focus\:rotate-y-0:focus {
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+
+.focus\:rotate-y-90:focus {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.focus\:rotate-y-180:focus {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.focus\:rotate-y-270:focus {
+  -webkit-transform: rotateY(270deg);
+          transform: rotateY(270deg);
+}
 
 @media (min-width: 640px) {
   .sm\:sr-only {
