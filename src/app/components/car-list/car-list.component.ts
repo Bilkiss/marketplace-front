@@ -56,7 +56,7 @@ export class CarListComponent implements OnInit {
 
   getCarList() {
     this.endpointService.request('car_list', 'get').subscribe( res => {
-      console.log('Get car list res: ', res);
+      // console.log('Get car list res: ', res);
       if (res) {
         this.carList = res;
         if (this.carList) {
@@ -67,16 +67,16 @@ export class CarListComponent implements OnInit {
             let dateOl = moment(x.date_online);
             let dateOff = moment(x.date_offline);
 
-            console.log('dateOl: ', dateOl);
-            console.log('dateOff: ', dateOff);
+            // console.log('dateOl: ', dateOl);
+            // console.log('dateOff: ', dateOff);
 
             return dateOff.isAfter(today) && (dateOl.isBefore(today) || dateOl.isSame(today) );
 
           });
 
           this.carFilterList = this.carList;
-          console.log('Car list online: ', this.carList.date_online);
-          console.log('Car list: ', this.carList);
+          // console.log('Car list online: ', this.carList.date_online);
+          // console.log('Car list: ', this.carList);
         }
       }
     }, error => {

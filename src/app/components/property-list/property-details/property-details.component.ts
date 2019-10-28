@@ -14,6 +14,8 @@ export class PropertyDetailsComponent implements OnInit {
   propertySlug;
   propertyDetails: any = {};
   propertyDetailsForm: FormGroup;
+  errorProp = false;
+  errorProMsg = '';
 
   constructor(
     public endpointService: EndpointsService,
@@ -57,6 +59,14 @@ export class PropertyDetailsComponent implements OnInit {
         console.log('Error!! get property details res: ', error);
       });
     }
+
+  }
+
+  addProperty() {
+
+  }
+
+  clearPro() {
 
   }
 

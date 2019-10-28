@@ -33,12 +33,12 @@
             Add Offer
             <i class="ml-3 fa fa-angle-double-down"></i>
           </span>
-          <ul *ngIf="toggleNavDropdown" class="bg-white absolute top-auto mt-1 mr-2 object-center rounded shadow right-0 w-32 px-6 py-2">
+          <ul *ngIf="toggleNavDropdown" class="bg-white absolute top-auto mt-1 mr-2 object-center rounded shadow right-0 w-32">
             <li>
-              <a [routerLink]="['/add-car']" class="text-gray-600 cursor-pointer">Car</a>
+              <a [routerLink]="['/add-car']" (click)="toggleAddOffer()" class="block hover:bg-gray-200 text-gray-600  px-6 py-2 cursor-pointer">Car</a>
             </li>
             <li>
-              <a [routerLink]="['/add-property']" class="text-gray-600 cursor-pointer">Property</a>
+              <a [routerLink]="['/add-property']" (click)="toggleAddOffer()" class="text-gray-600 block hover:bg-gray-200 px-6 py-2 cursor-pointer">Property</a>
             </li>
           </ul>
           </span>

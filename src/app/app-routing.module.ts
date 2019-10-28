@@ -12,8 +12,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'car-list', component: CarListComponent },
   { path: 'car-details/:slug', component: CarDetailsComponent },
+  { path: 'add-car', component: CarDetailsComponent },
   { path: 'property-list', component: PropertyListComponent },
   { path: 'property-details/:slug', component: PropertyDetailsComponent },
+  { path: 'add-property', component: PropertyDetailsComponent },
   { path: 'login', component: AuthComponent}
 ];
 

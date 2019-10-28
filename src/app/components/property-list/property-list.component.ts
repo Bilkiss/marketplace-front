@@ -55,7 +55,7 @@ export class PropertyListComponent implements OnInit {
 
   getPropertyList() {
     this.endpointService.request('property_list', 'get').subscribe( res => {
-      console.log('Get car list res: ', res);
+      // console.log('Get property list res: ', res);
       if (res) {
         this.propertyList = res;
         if (this.propertyList) {
@@ -66,20 +66,20 @@ export class PropertyListComponent implements OnInit {
             let dateOl = moment(x.date_online);
             let dateOff = moment(x.date_offline);
 
-            console.log('dateOl: ', dateOl);
-            console.log('dateOff: ', dateOff);
+            // console.log('dateOl: ', dateOl);
+            // console.log('dateOff: ', dateOff);
 
             return dateOff.isAfter(today) && (dateOl.isBefore(today) || dateOl.isSame(today) );
 
           });
 
           this.propertyFilterList = this.propertyList;
-          console.log('Car list online: ', this.propertyList.date_online);
-          console.log('Car list: ', this.propertyList);
+          // console.log('Property list online: ', this.propertyList.date_online);
+          // console.log('Property list: ', this.propertyList);
         }
       }
     }, error => {
-      console.log('Error!! get car list: ', error);
+      console.log('Error!! get property list: ', error);
     });
   }
 

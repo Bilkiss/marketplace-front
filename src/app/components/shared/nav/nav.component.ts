@@ -35,7 +35,7 @@ export class NavComponent implements OnInit {
 
   getTokenFromStorage() {
     this.userToken = this.storage.get('currentUserToken');
-    console.log('userToken NAV: ', this.userToken);
+    // console.log('userToken NAV: ', this.userToken);
     if (this.userToken)
       this.isUserLogin = true;
 
@@ -44,7 +44,7 @@ export class NavComponent implements OnInit {
   getUserFromStorage() {
     this.user = this.storage.get('currentUserCred');
     this.user = JSON.parse(this.user);
-    console.log('user NAV: ', this.user);
+    // console.log('user NAV: ', this.user);
 
   }
 
