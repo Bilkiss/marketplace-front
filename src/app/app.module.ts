@@ -13,6 +13,8 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { PropertyListComponent } from './components/property-list/property-list.component';
+import { PropertyDetailsComponent } from './components/property-list/property-details/property-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AuthComponent } from './components/auth/auth.component';
     NavComponent,
     CarDetailsComponent,
     CarListComponent,
-    AuthComponent
+    AuthComponent,
+    PropertyListComponent,
+    PropertyDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -32,7 +32,14 @@ export class CarDetailsComponent implements OnInit {
       transmission: [''],
       door_count: [''],
       image_car: [''],
-      price: ['']
+      price: [''],
+      slug: ['', Validators],
+      description: ['', Validators],
+      date_online: [''],
+      date_offline: [''],
+      currency: [''],
+      contact_phone: [''],
+      contact_email: ['']
     });
 
   }

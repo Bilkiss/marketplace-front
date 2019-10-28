@@ -11,6 +11,8 @@ export class EndpointsService {
   public endpoints = {
     car_list: `${this.baseUrl}car/list`,
     car_by_slug: `${this.baseUrl}car/`,
+    property_list: `${this.baseUrl}property/list`,
+    property_by_slug: `${this.baseUrl}property/`,
     signin: `${this.baseUrl}user/signin`,
     register: `${this.baseUrl}user/signup`,
   };
@@ -37,4 +39,4 @@ export class EndpointsService {
 }
 
 
-export type endpointType = 'car_list' | 'car_by_slug' | 'signin' | 'register';
+export type endpointType = 'car_list' | 'car_by_slug' | 'property_list' | 'property_by_slug' | 'signin' | 'register';
