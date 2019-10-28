@@ -17,7 +17,7 @@ export class EndpointsService {
     property_by_slug: `${this.baseUrl}property/`,
     signin: `${this.baseUrl}user/signin`,
     register: `${this.baseUrl}user/signup`,
-    image_upload: `${this.baseUrlLocal}car/img-upload`,
+    image_upload: `${this.baseUrl}car/img-upload`,
   };
 
   constructor(
