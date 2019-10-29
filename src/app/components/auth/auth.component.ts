@@ -25,6 +25,8 @@ export class AuthComponent implements OnInit {
   errorRegMsg = '';
   isLoginTab = true;
   isRegistrationTab = false;
+  alertReg = false;
+  regSuccessMsg = '';
 
   constructor(
     public endpointService: EndpointsService,
@@ -87,12 +89,12 @@ export class AuthComponent implements OnInit {
       console.log('Res login ', res);
       if (res) {
         this.currentUserToken = res;
+        this.storage.set('currentUserToken', this.currentUserToken.token);
+        this.storage.set('currentUserCred', JSON.stringify(this.currentUserToken.user));
 
         this.authEventService.getToken(this.currentUserToken.token);
         this.authEventService.getUser(this.currentUserToken.user);
 
-        this.storage.set('currentUserToken', this.currentUserToken.token);
-        this.storage.set('currentUserCred', JSON.stringify(this.currentUserToken.user));
 
         this.goToHomepage();
       }
@@ -103,6 +105,10 @@ export class AuthComponent implements OnInit {
       this.errorLogin = true;
       this.errorLoginMsg = error.error.msg;
     });
+  }
+
+  closeRegAlert() {
+    this.alertReg = false;
   }
 
   userRegistration() {
@@ -120,10 +126,13 @@ export class AuthComponent implements OnInit {
       if (res) {
         this.currentUserToken = res;
 
-        this.storage.set('currentUserToken', this.currentUserToken.token);
-        this.storage.set('currentUserCred', JSON.stringify(this.currentUserToken.user));
+        this.regSuccessMsg = this.currentUserToken.msg;
+        console.log('regSuccessMsg .msg: ', this.regSuccessMsg);
 
-        this.goToHomepage();
+        this.alertReg = true;
+        this.isRegistrationTab = false;
+        this.isLoginTab = true;
+
       }
     }, error => {
       console.log('Error!! user registration: ', error);
