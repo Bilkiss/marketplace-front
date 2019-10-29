@@ -37,7 +37,7 @@ export class CarListComponent implements OnInit {
   }
 
   searchFunc(event) {
-    console.log('event.target.value: ', event.target.value);
+    // console.log('event.target.value: ', event.target.value);
 
     if (event.target.value) {
       this.searchItem = this.searchItem.toLowerCase();
