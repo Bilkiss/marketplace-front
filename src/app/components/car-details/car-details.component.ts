@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EndpointsService } from '../../services/endpoints.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-car-details',
@@ -17,6 +18,7 @@ export class CarDetailsComponent implements OnInit {
   carDetailsError = false;
   carDetailsErrorMsg = '';
   imageItem;
+  userDetails: any;
 
   fileData: File = null;
 
@@ -24,7 +26,8 @@ export class CarDetailsComponent implements OnInit {
     public endpointService: EndpointsService,
     public route: ActivatedRoute,
     public router: Router,
-    private fBuilder: FormBuilder
+    private fBuilder: FormBuilder,
+    private storage: StorageService
   ) {
 
     this.carDetailsForm = this.fBuilder.group({
@@ -56,6 +59,7 @@ export class CarDetailsComponent implements OnInit {
 
     this.getCarDetails();
     this.initCarDetails();
+    this.getUserCred();
 
   }
 
@@ -96,6 +100,16 @@ export class CarDetailsComponent implements OnInit {
 
   }
 
+  getUserCred() {
+    this.userDetails = this.storage.get('currentUserCred');
+    this.userDetails = JSON.parse(this.userDetails);
+    console.log('userDetials: ', this.userDetails);
+    if (this.userDetails) {
+      this.carDetails.contact_phone = this.userDetails.phone;
+      this.carDetails.contact_email = this.userDetails.email;
+    }
+  }
+
   onFileChanged(event: any) {
 
     // console.log('onFileChanged event: ', event);
@@ -127,40 +141,6 @@ export class CarDetailsComponent implements OnInit {
 
   }
 
- /* onFileChanged(event: any) {
-
-    let formData = new FormData();
-
-    this.imageItem = event.target.files;
-
-    console.log("imageItem: ", this.imageItem);
-    console.log("imageItem[0]: ", this.imageItem[0]);
-    console.log("imageItem[0]['name']: ", this.imageItem[0]['name']);
-
-    let data = {
-      image: this.imageItem[0]
-    };
-
-    // formData.append('image', this.imageItem[0]);
-    // formData.append('Image', JSON.stringify(data));
-    formData.append('image_car', this.imageItem[0]);
-    var options = { content: formData };
-
-    console.log('options: ', options);
-    console.log('img upload formData: ', formData);
-
-    this.endpointService.requestWithHeaders('image_upload', 'post', formData).subscribe( res => {
-      console.log("Res upload image:", res);
-      console.log("Res upload image secureUrl: ", res.secure_url);
-      if (res) {
-        let secureUrl = res.secure_url;
-        this.carDetails.image_car = secureUrl;
-      }
-    }, error => {
-      console.log('Error! upload image:', error);
-    });
-
-  }*/
 
   addCarDetails() {
     console.log('Add car - carDetails: ', this.carDetails);
