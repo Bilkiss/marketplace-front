@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EndpointsService } from '../../../services/endpoints.service';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-property-details',
@@ -16,12 +17,14 @@ export class PropertyDetailsComponent implements OnInit {
   propertyDetailsForm: FormGroup;
   errorProp = false;
   errorProMsg = '';
+  userDetails: any;
 
   constructor(
     public endpointService: EndpointsService,
     public route: ActivatedRoute,
     public router: Router,
-    private fBuilder: FormBuilder
+    private fBuilder: FormBuilder,
+    public storage: StorageService
   ) {
 
     this.propertyDetailsForm = this.fBuilder.group({
@@ -45,6 +48,7 @@ export class PropertyDetailsComponent implements OnInit {
     console.log('propertySlug: ', this.propertySlug);
 
     this.getPropertyDetails();
+    this.getUserCred();
   }
 
   getPropertyDetails() {
@@ -60,6 +64,16 @@ export class PropertyDetailsComponent implements OnInit {
       });
     }
 
+  }
+
+  getUserCred() {
+    this.userDetails = this.storage.get('currentUserCred');
+    this.userDetails = JSON.parse(this.userDetails);
+    console.log('userDetials: ', this.userDetails);
+    if (this.userDetails) {
+      this.propertyDetails.contact_phone = this.userDetails.phone;
+      this.propertyDetails.contact_email = this.userDetails.email;
+    }
   }
 
   addProperty() {
