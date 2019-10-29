@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
+
+import { EndpointsService } from './services/endpoints.service';
+import { LoadingScreenInterceptor } from './shared/loading.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +19,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { PropertyListComponent } from './components/property-list/property-list.component';
 import { PropertyDetailsComponent } from './components/property-list/property-details/property-details.component';
+import { LoadingScreenComponent } from './components/shared/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { PropertyDetailsComponent } from './components/property-list/property-de
     CarListComponent,
     AuthComponent,
     PropertyListComponent,
-    PropertyDetailsComponent
+    PropertyDetailsComponent,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +41,17 @@ import { PropertyDetailsComponent } from './components/property-list/property-de
     HttpClientModule,
     AngularFontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxLoadingModule.forRoot({})
   ],
-  providers: [],
+  providers: [
+    EndpointsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingScreenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
