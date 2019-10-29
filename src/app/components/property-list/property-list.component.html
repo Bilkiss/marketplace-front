@@ -26,13 +26,13 @@
 
     <div class="w-full md:w-1/2 lg:w-1/3 pr-3" *ngFor="let property of propertyFilterList">
       <div class="card">
-        <img class="object-cover h-56 w-full" src="../../../assets/images/property.jpg" alt="{{property.name}}">
+        <img class="object-cover h-56 w-full" [src]="property.image_property ? property.image_property : defaultPropImg" alt="{{property.name}}">
 
 
         <div class="px-6 py-2">
           <div class="font-bold text-gray-700 text-xl mb-2">{{property.name}}</div>
           <p class="text-gray-700 text-base">
-            {{property.description}}
+            {{property.desc_excerpt}}
           </p>
         </div>
 

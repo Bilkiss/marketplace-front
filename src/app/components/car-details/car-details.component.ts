@@ -19,8 +19,7 @@ export class CarDetailsComponent implements OnInit {
   carDetailsErrorMsg = '';
   imageItem;
   userDetails: any;
-
-  fileData: File = null;
+  defaultCarImg = '../assets/images/car.jpg';
 
   constructor(
     public endpointService: EndpointsService,
@@ -43,6 +42,7 @@ export class CarDetailsComponent implements OnInit {
       price: [''],
       slug: ['', Validators],
       description: ['', Validators],
+      desc_excerpt: [''],
       date_online: [''],
       date_offline: [''],
       currency: [''],
@@ -77,6 +77,7 @@ export class CarDetailsComponent implements OnInit {
       price: '',
       slug: '',
       description: '',
+      desc_excerpt: '',
       date_online: '',
       date_offline: '',
       currency: '',
@@ -143,6 +144,9 @@ export class CarDetailsComponent implements OnInit {
 
 
   addCarDetails() {
+
+    const carDesc = this.carDetails.description;
+    this.carDetails.desc_excerpt = carDesc.length > 45 ? carDesc.substr(0, 45) + '...' : carDesc;
     console.log('Add car - carDetails: ', this.carDetails);
 
     this.carDetails.slug = this.carDetails.name.split(' ').join('-');

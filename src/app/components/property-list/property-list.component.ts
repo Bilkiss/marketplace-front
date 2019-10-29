@@ -14,6 +14,7 @@ export class PropertyListComponent implements OnInit {
   searchText: any;
   searchItem;
   propertyFilterList: any = [];
+  defaultPropImg = '../../../assets/images/property.jpg';
 
   constructor(
     public endpointService: EndpointsService

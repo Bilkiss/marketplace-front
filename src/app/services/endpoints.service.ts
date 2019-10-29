@@ -15,6 +15,7 @@ export class EndpointsService {
     add_car: `${this.baseUrl}car/add-car`,
     property_list: `${this.baseUrl}property/list`,
     property_by_slug: `${this.baseUrl}property/`,
+    add_property: `${this.baseUrl}property/add-property`,
     signin: `${this.baseUrl}user/signin`,
     register: `${this.baseUrl}user/signup`,
     image_upload: `${this.baseUrl}car/img-upload`,
@@ -58,4 +59,4 @@ export class EndpointsService {
 }
 
 
-export type endpointType = 'car_list' | 'car_by_slug' | 'add_car' | 'property_list' | 'property_by_slug' | 'signin' | 'register' | 'image_upload';
+export type endpointType = 'car_list' | 'car_by_slug' | 'add_car' | 'property_list' | 'property_by_slug' | 'add_property' | 'signin' | 'register' | 'image_upload';

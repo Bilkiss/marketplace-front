@@ -26,13 +26,13 @@
 
     <div class="w-full md:w-1/2 lg:w-1/3 pr-3" *ngFor="let car of carFilterList">
       <div class="card">
-        <img class="object-cover h-56 w-full" [src]="car.image_car" src="https://tailwindcss.com/img/card-top.jpg" alt="{{car.name}}">
+        <img class="object-cover h-56 w-full" [src]="car.image_car ? car.image_car : defaultCarImg" src="https://tailwindcss.com/img/card-top.jpg" alt="{{car.name}}">
 
 
         <div class="px-6 py-2">
           <div class="font-bold text-gray-700 text-xl mb-2">{{car.name}}</div>
           <p class="text-gray-700 text-base">
-            {{car.description}}
+            {{car.desc_excerpt}}
           </p>
         </div>
 

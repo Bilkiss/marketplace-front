@@ -18,6 +18,8 @@ export class PropertyDetailsComponent implements OnInit {
   errorProp = false;
   errorProMsg = '';
   userDetails: any;
+  imageItem;
+  defaultPropImg = '../../../assets/images/property.jpg';
 
   constructor(
     public endpointService: EndpointsService,
@@ -32,12 +34,14 @@ export class PropertyDetailsComponent implements OnInit {
       name: ['', Validators],
       slug: ['', Validators],
       description: ['', Validators],
+      desc_excerpt: [''],
       date_online: [''],
       date_offline: [''],
       currency: [''],
       contact_phone: [''],
       contact_email: [''],
-      price: ['']
+      price: [''],
+      image_property: ['']
     });
   }
 
@@ -49,6 +53,23 @@ export class PropertyDetailsComponent implements OnInit {
 
     this.getPropertyDetails();
     this.getUserCred();
+  }
+
+  initPropForm() {
+    this.propertyDetails = {
+      ref: '',
+      name: '',
+      slug: '',
+      description: '',
+      desc_excerpt: '',
+      date_online: '',
+      date_offline: '',
+      currency: '',
+      contact_phone: '',
+      contact_email: '',
+      price: '',
+      image_property: ''
+    };
   }
 
   getPropertyDetails() {
@@ -76,12 +97,62 @@ export class PropertyDetailsComponent implements OnInit {
     }
   }
 
+  onFileChanged(event: any) {
+
+    // console.log('onFileChanged event: ', event);
+
+    const formData: FormData = new FormData();
+
+    this.imageItem = event.target.files;
+
+    console.log('onFileChanged event target files: ', this.imageItem);
+    console.log('imageItem[0]: ', this.imageItem[0]);
+    console.log('imageItem[0]name:   ', this.imageItem[0].name);
+
+    formData.append('image', this.imageItem[0]);
+
+    console.log('formData: ', formData);
+
+    this.endpointService.request('image_upload', 'post', formData).subscribe( res => {
+      console.log('Res upload image: ', res);
+      console.log('Res upload image secureUrl: ', res.secure_url);
+      if (res) {
+        let secureUrl = res.secure_url;
+        this.propertyDetails.image_property = secureUrl;
+
+        console.log('propertyDetails: ', this.propertyDetails);
+      }
+    }, error => {
+      console.log('Error!!! upload image: ', error);
+    });
+
+  }
+
   addProperty() {
+    const propDesc = this.propertyDetails.description;
+
+    this.propertyDetails.desc_excerpt = propDesc.length > 45 ? propDesc.substr(0, 45) + '...' : propDesc;
+
+    console.log('addProperty propertyDetails: ', this.propertyDetails);
+
+    this.endpointService.request('add_property', 'post', this.propertyDetails).subscribe( res => {
+      console.log('Res add property: ', res);
+      if (res)
+        this.goToPropList();
+    }, error => {
+      console.log('Error!! add property: ', error);
+      this.errorProp = true;
+      this.errorProMsg = error.error.error.message;
+    });
 
   }
 
   clearPro() {
+    this.initPropForm();
+  }
 
+  goToPropList() {
+    this.router.navigate(['/property-list']);
   }
 
 }

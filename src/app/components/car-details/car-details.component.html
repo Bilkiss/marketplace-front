@@ -14,7 +14,7 @@
   <div class="md:flex hover:shadow p-6 border rounded mt-4">
     <div class="md:flex-shrink-0">
       <div *ngIf="carSlug">
-        <img class="rounded-lg md:w-56" [src]="carDetails.image_car"
+        <img class="rounded-lg md:w-56" [src]="carDetails.image_car ? carDetails.image_car : defaultCarImg"
              alt="{{carDetails.name}}">
       </div>
 

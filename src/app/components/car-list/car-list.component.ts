@@ -14,6 +14,7 @@ export class CarListComponent implements OnInit {
   searchText: any;
   searchItem;
   carFilterList: any = [];
+  defaultCarImg = '../assets/images/car.jpg';
 
   constructor(
     public endpointService: EndpointsService

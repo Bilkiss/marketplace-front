@@ -133,6 +133,10 @@ export class AuthComponent implements OnInit {
         this.isRegistrationTab = false;
         this.isLoginTab = true;
 
+        setTimeout(() => {
+          this.alertReg = false;
+        }, 2000);
+
       }
     }, error => {
       console.log('Error!! user registration: ', error);

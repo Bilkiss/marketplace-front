@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'property-list', component: PropertyListComponent },
   { path: 'property-details/:slug', component: PropertyDetailsComponent },
   { path: 'add-property', component: PropertyDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: AuthComponent}
+  { path: 'login', component: AuthComponent},
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
