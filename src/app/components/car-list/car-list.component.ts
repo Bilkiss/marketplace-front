@@ -43,10 +43,20 @@ export class CarListComponent implements OnInit {
       this.searchItem = this.searchItem.toLowerCase();
 
       this.carFilterList = this.carList.filter( x => {
-        let carName = x.name.toLowerCase();
-        let carBody = x.body_type.toLowerCase();
+        const carName = x.name.toLowerCase();
+        const carBody = x.body_type.toLowerCase();
+        const carDesc = x.desc_excerpt.toLowerCase();
+        const carContactemail = x.contact_email.toLowerCase();
+        const carPrice = x.price.toString();
+        const carContactPhone = x.phone.toString();
 
-        return carName.includes(this.searchItem) || carBody.includes(this.searchItem);
+
+        return carName.includes(this.searchItem) ||
+          carBody.includes(this.searchItem) ||
+          carDesc.includes(this.searchItem) ||
+          carContactemail.includes(this.searchItem) ||
+          carPrice.includes(this.searchItem) ||
+          carContactPhone.includes(this.searchItem);
 
       });
     } else {

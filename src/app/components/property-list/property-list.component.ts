@@ -21,11 +21,11 @@ export class PropertyListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPropertyList()
+    this.getPropertyList();
     this.searchText = {
       name: '',
       price: '',
-      body_type: ''
+      email: ''
     };
 
   }
@@ -42,10 +42,18 @@ export class PropertyListComponent implements OnInit {
       this.searchItem = this.searchItem.toLowerCase();
 
       this.propertyFilterList = this.propertyList.filter( x => {
-        let propertyName = x.name.toLowerCase();
+        const propertyName = x.name.toLowerCase();
+        const propDesc = x.desc_excerpt.toLowerCase();
+        const propEmail = x.contact_email.toLowerCase();
+        const propPrice = x.price.toString();
+        const propPhone = x.contact_phone.toString();
         // let carBody = x.body_type.toLowerCase();
 
-        return propertyName.includes(this.searchItem);
+        return propertyName.includes(this.searchItem) ||
+          propDesc.includes(this.searchItem) ||
+          propEmail.includes(this.searchItem) ||
+          propPrice.includes(this.searchItem) ||
+          propPhone.includes(this.searchItem);
 
       });
     } else {

@@ -376,6 +376,12 @@
           </div>
         </div>
 
+        <div class="text-right mt-10" *ngIf="carSlug" (click)="goToCarList()">
+          <button class="shadow-sm bg-blue-500 hover:bg-blue-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            <i class="fa fa-angle-double-left"></i> Back to list
+          </button>
+        </div>
+
       </div>
     </form>
   </div>

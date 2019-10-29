@@ -162,4 +162,8 @@ export class CarDetailsComponent implements OnInit {
     this.initCarDetails();
   }
 
+  goToCarList() {
+    this.router.navigate(['/car-list']);
+  }
+
 }
