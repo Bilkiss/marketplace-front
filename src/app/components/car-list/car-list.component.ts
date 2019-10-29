@@ -48,7 +48,7 @@ export class CarListComponent implements OnInit {
         const carDesc = x.desc_excerpt.toLowerCase();
         const carContactemail = x.contact_email.toLowerCase();
         const carPrice = x.price.toString();
-        const carContactPhone = x.phone.toString();
+        const carContactPhone = x.contact_phone.toString();
 
 
         return carName.includes(this.searchItem) ||
