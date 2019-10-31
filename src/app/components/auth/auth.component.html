@@ -22,8 +22,8 @@
               </div>
               <div class="md:w-2/3">
                 <input [(ngModel)]="userCred.email" formControlName="email" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="email">
-                <div *ngIf="submitted && f.email.errors">
-                  <p *ngIf="f.email.errors.required" class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div *ngIf="submitted && fLogin.email.errors">
+                  <p *ngIf="fLogin.email.errors.required" class="text-red-500 text-xs italic">Please fill out email field.</p>
                 </div>
               </div>
             </div>
@@ -35,8 +35,8 @@
               </div>
               <div class="md:w-2/3">
                 <input [(ngModel)]="userCred.password" formControlName="password" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-username" type="password" placeholder="******************">
-                <div *ngIf="submitted && f.password.errors">
-                  <p *ngIf="f.password.errors.required" class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div *ngIf="submitted && fLogin.password.errors">
+                  <p *ngIf="fLogin.password.errors.required" class="text-red-500 text-xs italic">Please fill out this field.</p>
                 </div>
               </div>
             </div>

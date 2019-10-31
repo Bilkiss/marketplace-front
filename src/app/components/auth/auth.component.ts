@@ -80,13 +80,13 @@ export class AuthComponent implements OnInit {
   userLogin() {
     this.submitted = true;
 
-    console.log('userCred: ', this.userCred);
+    // console.log('userCred: ', this.userCred);
     if (this.loginForm.invalid) {
       return;
     }
 
     this.endpointService.request('signin', 'post', this.userCred).subscribe( res => {
-      console.log('Res login ', res);
+      // console.log('Res login ', res);
       if (res) {
         this.currentUserToken = res;
         this.storage.set('currentUserToken', this.currentUserToken.token);
@@ -115,19 +115,19 @@ export class AuthComponent implements OnInit {
 
     this.submitted = true;
 
-    console.log('regUserCred: ', this.regUserCred);
+    // console.log('regUserCred: ', this.regUserCred);
 
     if (this.registrationForm.invalid) {
       return;
     }
 
     this.endpointService.request('register', 'post', this.regUserCred).subscribe( res => {
-      console.log('Res - user registration: ', res);
+      // console.log('Res - user registration: ', res);
       if (res) {
         this.currentUserToken = res;
 
         this.regSuccessMsg = this.currentUserToken.msg;
-        console.log('regSuccessMsg .msg: ', this.regSuccessMsg);
+        // console.log('regSuccessMsg .msg: ', this.regSuccessMsg);
 
         this.alertReg = true;
         this.isRegistrationTab = false;
@@ -148,6 +148,7 @@ export class AuthComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.registrationForm.controls; }
+  get fLogin() { return this.loginForm.controls; }
 
   goToHomepage() {
     this.router.navigate(['']);

@@ -40,7 +40,7 @@ export class NavComponent implements OnInit {
   }
 
   toggleCatMenu() {
-    console.log('toggle cat menu');
+    // console.log('toggle cat menu');
     this.toggleCatDropdown = !this.toggleCatDropdown;
   }
 

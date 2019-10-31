@@ -55,7 +55,7 @@ export class CarDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.carSlug = this.route.snapshot.paramMap.get('slug');
-    console.log('carSlug: ', this.carSlug);
+    // console.log('carSlug: ', this.carSlug);
 
     this.getCarDetails();
     this.initCarDetails();
@@ -104,7 +104,7 @@ export class CarDetailsComponent implements OnInit {
   getUserCred() {
     this.userDetails = this.storage.get('currentUserCred');
     this.userDetails = JSON.parse(this.userDetails);
-    console.log('userDetials: ', this.userDetails);
+    // console.log('userDetials: ', this.userDetails);
     if (this.userDetails) {
       this.carDetails.contact_phone = this.userDetails.phone;
       this.carDetails.contact_email = this.userDetails.email;
@@ -119,22 +119,22 @@ export class CarDetailsComponent implements OnInit {
 
     this.imageItem = event.target.files;
 
-    console.log('onFileChanged event target files: ', this.imageItem);
-    console.log('imageItem[0]: ', this.imageItem[0]);
-    console.log('imageItem[0]name:   ', this.imageItem[0].name);
+    // console.log('onFileChanged event target files: ', this.imageItem);
+    // console.log('imageItem[0]: ', this.imageItem[0]);
+    // console.log('imageItem[0]name:   ', this.imageItem[0].name);
 
     formData.append('image', this.imageItem[0]);
 
-    console.log('formData: ', formData);
+    // console.log('formData: ', formData);
 
     this.endpointService.request('image_upload', 'post', formData).subscribe( res => {
-      console.log('Res upload image: ', res);
-      console.log('Res upload image secureUrl: ', res.secure_url);
+      // console.log('Res upload image: ', res);
+      // console.log('Res upload image secureUrl: ', res.secure_url);
       if (res) {
         let secureUrl = res.secure_url;
         this.carDetails.image_car = secureUrl;
 
-        console.log('carDetails: ', this.carDetails);
+        // console.log('carDetails: ', this.carDetails);
       }
     }, error => {
       console.log('Error!!! upload image: ', error);
@@ -147,12 +147,12 @@ export class CarDetailsComponent implements OnInit {
 
     const carDesc = this.carDetails.description;
     this.carDetails.desc_excerpt = carDesc.length > 45 ? carDesc.substr(0, 45) + '...' : carDesc;
-    console.log('Add car - carDetails: ', this.carDetails);
+    // console.log('Add car - carDetails: ', this.carDetails);
 
     this.carDetails.slug = this.carDetails.name.split(' ').join('-');
-    console.log('slug in addcar: ', this.carDetails.slug);
+    // console.log('slug in addcar: ', this.carDetails.slug);
     this.endpointService.request('add_car', 'post', this.carDetails).subscribe( res => {
-      console.log('res add car: ', res);
+      // console.log('res add car: ', res);
     }, error => {
       console.log('Error!! add car: ', error);
     });
