@@ -14,6 +14,8 @@ export class NavComponent implements OnInit {
   userToken;
   user: any = {};
   toggleNavDropdown = false;
+  toggleCatDropdown = false;
+  isNavOpen = false;
 
   constructor(
     public storage: StorageService,
@@ -29,8 +31,17 @@ export class NavComponent implements OnInit {
 
   }
 
+  toggleNav() {
+    this.isNavOpen = !this.isNavOpen;
+  }
+
   toggleAddOffer() {
     this.toggleNavDropdown = !this.toggleNavDropdown;
+  }
+
+  toggleCatMenu() {
+    console.log('toggle cat menu');
+    this.toggleCatDropdown = !this.toggleCatDropdown;
   }
 
   getTokenFromStorage() {
